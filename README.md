@@ -1,5 +1,5 @@
 # Arc*: Asynchronous Event-based Corner Detection 
-This code is the reference implementation of the Arc* algorithm described in the paper  "**Asynchronous Corner Detection and Tracking for Event Cameras in Real Time**",  RA-L 2018. This work was developed at the [Vision for Robotics Lab](http://v4rl.ethz.ch/), [ETH Zurich](http://ethz.ch/).
+This code is the reference implementation of the Arc* algorithm described in the paper  "**Asynchronous Corner Detection and Tracking for Event Cameras in Real Time**", Alzugaray & Chli, RA-L 2018. This work was developed at the [Vision for Robotics Lab](http://v4rl.ethz.ch/), [ETH Zurich](http://ethz.ch/).
 
 Event cameras are only able to detect intensity changes in form of asynchronous events. The presented Arc* algorithm is able to detect which of these events were generated from visually salient corners in the scene. The algorithm operates solely on events and processes them individually in an asynchronous fashion. Our approach is able to handle up to several millions of events per second, achieving high-frequency feature detection and real-time performance even in challenging scenarios. 
 
@@ -68,7 +68,7 @@ Navigate to your initialized ROS workspace, clone and compile:
 
     $ cd /path/to/catkin_ws/src
     $ git clone https://github.com/ialzugaray/arc_star_ros.git
-    $ cd ..`
+    $ cd ..
     $ catkin build --cmake-args -DCMAKE_BUILD_TYPE=Release # Assume you have already installed rpg_dvs_ros
     $ source /path/to/catkin_ws/devel/setup.bash
 
