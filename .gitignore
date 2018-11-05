@@ -1,0 +1,5 @@
+# ignore backup files
+*~ 
+~.autosave
+*.user
+arc_star/build/*

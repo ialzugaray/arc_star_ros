@@ -1,0 +1,48 @@
+<launch>
+  <arg name="rosbag_flag" default='0'/>
+  <arg name="rosbag_path" default=''/>
+
+  <!-- camera driver -->
+  <group if="$(eval arg('rosbag_flag')==0)">
+    <node name="davis_ros_driver" pkg="davis_ros_driver" type="davis_ros_driver" />
+  </group>
+
+  <!-- rosbag player-->
+  <group if="$(eval arg('rosbag_flag')!=0)">
+    <node pkg="rosbag" type="play" name="rosbag_player" args="$(arg rosbag_path)"/>
+  </group>
+
+
+  <!-- corner detector -->
+  <node name="arc_star_ros" pkg="arc_star_ros" type="arc_star_ros"  output="screen">
+    <remap from="events" to="/dvs/events" />
+    <remap from="corners" to="/dvs/corners" />
+  </node>
+
+  <!-- visualization events-->
+  <node name="dvs_renderer_events" pkg="dvs_renderer" type="dvs_renderer">
+    <param name="display_method" value="red-blue"/>
+    <remap from="events" to="/dvs/events" />
+    <remap from="image" to="/dvs/image_raw" />
+    <remap from="camera_info" to="/dvs/camera_info" />
+    <remap from="dvs_rendering" to="dvs_rendering_events" />
+  </node>
+
+  <node name="image_view_events" pkg="image_view" type="image_view">
+  	<remap from="image" to="dvs_rendering_events"/>
+  </node>
+
+  <!-- visualization corners-->
+  <node name="dvs_renderer_corners" pkg="dvs_renderer" type="dvs_renderer">
+    <param name="display_method" value="red-blue"/>
+    <remap from="events" to="/dvs/corners" />
+    <remap from="image" to="/dvs/image_raw" />
+    <remap from="camera_info" to="/dvs/camera_info" />
+    <remap from="dvs_rendering" to="dvs_rendering_corners" />
+  </node>
+
+  <node name="image_view_corners" pkg="image_view" type="image_view">
+  	<remap from="image" to="dvs_rendering_corners"/>
+  </node>
+
+</launch>
