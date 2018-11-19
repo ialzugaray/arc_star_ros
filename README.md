@@ -36,11 +36,7 @@ The source code is released under the MIT License.
 We provide Arc* algorithm as a stand-alone code with minimal dependencies in the subfolder `./arc_star`, intended for high-performance benchmarking. Alternatively, you can also use the provided minimal ROS wrappers, for fast deployment, live operation or qualitative comparison. 
 
 Requirements: 
-* [Eigen 3](https://eigen.tuxfamily.org/dox/)
-
-Note: The current CMake configuration assumes Eigen3 is reachable system-wide. You can address this issue by installing Eigen from terminal and creating a symbolic link:
-    `$ sudo apt-get install libeigen3-dev`
-    `$ sudo ln -s /usr/include/eigen3/Eigen /usr/local/include/`
+* [Eigen 3](https://eigen.tuxfamily.org/dox/) `sudo apt-get install libeigen3-dev`
 
 ROS-related requirements:
 * [ROS Kinetic](http://wiki.ros.org/kinetic) 
