@@ -75,6 +75,9 @@ Alternatively, you can also play a rosbag file. You can use rosbags from the fro
 
     $ roslaunch arc_star_ros arc_star.launch rosbag_flag:=1 rosbag_path:=/path/to/my_bag.bag
 
+### Notes on the Implementation
+The current implementation measures the length of the arc of new elements as the number of elements that have been processed until the arc stops growing, instead of the number of elements in the arc as originally described in the  [publication](https://www.research-collection.ethz.ch/handle/20.500.11850/277131). Such subtle difference accounts for a more reliable response on edges of the scene.
+
 # Contact
 Please, create an issue if you have questions or bug reports. If you come up with any improvements, please create a pull request. Alternatively, you can also contact me at ialzugaray@mavt.ethz.ch.
 
